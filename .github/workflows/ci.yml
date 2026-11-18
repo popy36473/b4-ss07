@@ -1,0 +1,28 @@
+name: Demo01 — CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: self-hosted
+    labels: demo01
+
+    steps:
+      - name: 📥 Kiểm tra mã nguồn
+        uses: actions/checkout@v4
+
+      - name: ☕ Cấu hình Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: 🔨 Cấp quyền cho Gradle
+        run: chmod +x gradlew
+
+      - name: 🔨 Build dự án
+        run: ./gradlew build --no-daemon

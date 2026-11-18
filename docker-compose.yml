@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  github-runner:
+    image: myoung34/github-runner:latest
+    container_name: demo01-runner
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - REPO_URL=https://github.com/popy36473/b4-ss07
+      - RUNNER_TOKEN=BKF3MHKP2WDTW3YFQZIE3NLK7WYS2
+      - RUNNER_NAME=demo01-runner
+      - RUNNER_LABELS=self-hosted,demo01
+      - RUNNER_WORKDIR=/tmp/workdir
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - runner-workdir:/tmp/workdir
+
+volumes:
+  runner-workdir:
