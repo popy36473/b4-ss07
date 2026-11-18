@@ -8,8 +8,7 @@ on:
 jobs:
   build:
     name: Build & Test
-    runs-on: self-hosted
-    labels: demo01
+    runs-on: demo01
 
     steps:
       - name: 📥 Kiểm tra mã nguồn
